@@ -1,7 +1,5 @@
 #lang racket/base
 
-(require rackunit)
-
 (define (range bottom top)
         (if (>= bottom top) '() (cons bottom (range (+ bottom 1) top))))
 
@@ -18,6 +16,7 @@
 (define (sum xs) (apply + xs))
 
 (module+ test
+         (require rackunit)
          (test-case "small-range"
                     (check-equal? (range 1 1) '())
                     (check-equal? (range 1 2) '(1))

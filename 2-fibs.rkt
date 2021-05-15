@@ -1,7 +1,5 @@
 #lang racket/base
 
-(require rackunit)
-
 (require racket/stream)
 
 ; Made this version first, but remembered that we don't want x amount of fib numbers.
@@ -12,11 +10,6 @@
                     (let* ((prev1 (car xs)) (prev2 (cadr xs)) (new-prev1 (+ prev1 prev2)))
                           (iter (+ index 1) (cons new-prev1 xs)))))
         (reverse (iter 3 '(2 1))))
-
-(test-case "fibs"
-           (check-equal? (fibs 3) '(1 2 3))
-           (check-equal? (fibs 4) '(1 2 3 5))
-           (check-equal? (fibs 5) '(1 2 3 5 8)))
 
 ; It felt incorrect to hard-code when to stop producing fibs, so I produced an infinite stream instead.
 ; I also wanted to play with streams overall.
@@ -34,8 +27,12 @@
               [else (stream-cons (stream-first s) (stream-take-until p (stream-rest s)))]))
 
 (module+ test
-        
-         (define (ce a b) (check-equal? a b))
+         (require rackunit)
+         (define ce check-equal?)
+         (test-case "fibs"
+                    (ce (fibs 3) '(1 2 3))
+                    (ce (fibs 4) '(1 2 3 5))
+                    (ce (fibs 5) '(1 2 3 5 8)))
          (test-case "stream-first" (ce (stream-first (fibs-stream)) 1))
          (test-case "fibs"
                     (ce (stream->list (stream-take-until (lambda (x) (> x 10)) (fibs-stream)))

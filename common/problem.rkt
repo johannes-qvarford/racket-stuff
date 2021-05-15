@@ -26,8 +26,7 @@
 
 (provide plus1)
 
-(provide not=
-)
+(provide not=)
 
 (provide no-remainder?)
 
@@ -93,8 +92,7 @@
 
 (define curry (lambda (f . xs) (lambda ys (apply f (foldr cons ys xs)))))
 
-(ct ((curry
-no-remainder? 4) 2))
+(ct ((curry no-remainder? 4) 2))
 
 (define curry-back (lambda (f . xs) (lambda ys (apply f (foldr cons xs ys)))))
 
