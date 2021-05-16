@@ -16,4 +16,4 @@ jobs:
       - name: Install Package and its Dependencies
         run: raco pkg install --auto --batch
       - name: Run Tests
-        run: raco test 1-multiples-of-3-and-5.rkt 2-fibs.rkt 3-prime-factors.rkt 4-largest-palindrome-product.rkt 5-smallest-multiple.rkt
+        run: raco test .
