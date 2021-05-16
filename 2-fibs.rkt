@@ -22,8 +22,8 @@
                     (check-equal? (stream->list (stream-take-while (curry > 10) (fibs-stream)))
                                   '(1 2 3 5 8)))
          (test-case "answer"
-                    (define (too-big? x) (> x 4000000))
-                    (define big (stream-take-while (compose1 not too-big?) (fibs-stream)))
-                    (define big-even (stream-filter even? big))
-                    (define big-even-sum (stream-sum big-even))
-                    (check-equal? big-even-sum 4613732)))
+                    (define (too-small? x) (<= x 4000000))
+                    (define smalls (stream-take-while too-small? (fibs-stream)))
+                    (define evens (stream-filter even? smalls))
+                    (define evens-sum (stream-sum evens))
+                    (check-equal? evens-sum 4613732)))

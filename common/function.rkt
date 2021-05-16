@@ -12,7 +12,7 @@
 (module+ test
     (require rackunit)
     (require racket/port)
-    (test-case "apply-with-successive-pairs"
+    (test-case "apply-to-successive-pairs"
         (define (double-printer a b) (print a) (print b))
         (define output1
             (with-output-to-string (lambda ()
