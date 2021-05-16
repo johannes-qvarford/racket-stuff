@@ -1,3 +1,3 @@
 #lang info
 
-(define build-deps '("rackcheck" "rackunit-lib" "rash"))
+(define build-deps '("rackcheck" "rackunit-lib" "rash" "stream-etc"))
