@@ -1,4 +1,4 @@
 #!/usr/bin/env racket
 #lang rash
 
-find . -type f | grep -v "/\\." | xargs -n 1 -d "\n" racket-pretty-printer --inplace -f
+find . -type f | grep -v "/\\." | grep .rkt | xargs -n 1 -d "\n" racket-pretty-printer --inplace -f
