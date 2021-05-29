@@ -13,4 +13,4 @@
          #:when (triplet? a b (make-c a b)))
     (* a b (make-c a b))))
   
-(module test)
+(module test racket/base)
