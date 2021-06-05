@@ -12,7 +12,7 @@
                     (
                         [args-stx (syntax->list #'(ARGS ...))]
                         [expected-stx (syntax->list #'(EXPECTED ...))]
-                        [clause-stx (cdr (syntax->list stx))])
+                        [clause-stx (cddr (syntax->list stx))])
                     (quasisyntax/loc clause-stx (check-equal? (apply NAME #,args-stx) #,expected-stx))))]))
 
 (module+ test
@@ -22,7 +22,7 @@
 (define-syntax (test stx)
     (syntax-case stx ()
         [
-            (test2 NAME ARGS ...)
+            (_ NAME ARGS ...)
             #'(module+ test
                 (require rackunit)
                 (test-case (symbol->string (quote NAME)) (checks NAME ARGS ...)))]

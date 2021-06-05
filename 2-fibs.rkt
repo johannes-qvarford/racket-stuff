@@ -2,7 +2,7 @@
 
 (require math/base)
 (require (only-in srfi/41 stream-take-while))
-(require stream-etc)
+(require stream-etc threading)
 (require "common/test.rkt")
 
 ; It felt incorrect to hard-code when to stop producing fibs, so I produced an infinite stream instead.
